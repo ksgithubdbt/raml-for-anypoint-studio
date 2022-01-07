@@ -1,0 +1,30 @@
+#%RAML 1.0
+title: raml-for-anypoint-studio
+version: v1.0
+baseUri: http://localhost:8081/raml-api
+
+types:
+  contacttype: !include contact-datatype.raml
+
+/info:
+  get:
+    displayName: Get the account list
+    queryParameters:
+      email:
+        required: false
+        type: string
+        example:
+          value: user@gmail.com
+    responses:
+      200:
+        body:
+          application/json:
+            type: contacttype
+            example: 
+              {
+                Id: "123",
+                FirstName: "Fname",
+                LastName: "Lname",
+                email: "email@gmail.com"
+              }
+
